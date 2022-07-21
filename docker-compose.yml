@@ -17,7 +17,7 @@ services:
     container_name: Portal
     restart: always
     environment:
-      - VIRTUAL_HOST=portal.midomino.com
+      - VIRTUAL_HOST=portal.midominio.com
     volumes:
       - /storage/nginx/portal:/usr/share/nginx/html:ro
 
@@ -26,6 +26,6 @@ services:
     container_name: ERP
     restart: always
     environment:
-      - VIRTUAL_HOST=erp.midomino.com
+      - VIRTUAL_HOST=erp.midominio.com
     volumes:
       - /storage/apache/erp:/usr/local/apache2/htdocs
