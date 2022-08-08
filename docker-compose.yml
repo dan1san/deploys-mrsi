@@ -19,7 +19,7 @@ services:
     environment:
       - VIRTUAL_HOST=portal.midominio.com
     volumes:
-      - /storage/nginx/portal:/usr/share/nginx/html:ro
+      - /volumes/www/portal:/usr/share/nginx/html:ro
 
   erp:
     image: httpd
@@ -28,4 +28,4 @@ services:
     environment:
       - VIRTUAL_HOST=erp.midominio.com
     volumes:
-      - /storage/apache/erp:/usr/local/apache2/htdocs
+      - /volumes/www/erp:/usr/local/apache2/htdocs
