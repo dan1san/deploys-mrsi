@@ -1,45 +1,42 @@
+
 version: '3.1'
 # Servicios
 services:
 
   reverse-proxy:
-    image: nginxproxy/nginx-proxy:alpine
+    image: jwilder/nginx-proxy:alpine
     container_name: Reverse-Proxy
     restart: always
     ports:
       - 80:80
       - 443:443
     volumes:
-      - /volumes/nginx/certs:/etc/nginx/certs
-      - /volumes/nginx/vhostd:/etc/nginx/vhost.d
-      - /volumes/nginx/html:/usr/share/nginx/html:rw
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   portal:
     image: nginx
+    container_name: Portal
     restart: always
     environment:
       - VIRTUAL_HOST=portal-mtw.ddns.net
-      - VIRTUAL_PATH=/
     volumes:
       - /volumes/www/portal:/usr/share/nginx/html:ro
 
   factura:
     image: nginx
+    container_name: Factura
     restart: always
     environment:
-      - VIRTUAL_HOST=portal-mtw.ddns.net
-      - VIRTUAL_PATH=/factura/
-      - VIRUTAL_DEST=/
+      - VIRTUAL_HOST=factura-mtw.ddns.net
     volumes:
       - /volumes/www/factura:/usr/share/nginx/html:ro
 
+  # ERP
   erp:
     image: httpd
+    container_name: ERP
     restart: always
     environment:
-      - VIRTUAL_HOST=portal-mtw.ddns.net
-      - VIRTUAL_PATH=/erp/
-      - VIRUTAL_DEST=/
+      - VIRTUAL_HOST=erp-mtw.ddns.net
     volumes:
       - /volumes/www/erp:/usr/local/apache2/htdocs
