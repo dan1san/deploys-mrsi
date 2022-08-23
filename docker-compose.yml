@@ -22,8 +22,7 @@ services:
     environment:
       - VIRTUAL_HOST=portal-mtw.ddns.net
       - VIRTUAL_PATH=/
-      - LETSENCRYPT_HOST=portal-mtw.ddns.net
-      - LETSENCRYPT_EMAIL=dan1san_@hotmail.com
+
     volumes:
       - /volumes/www/portal:/usr/share/nginx/html:ro
 
@@ -35,8 +34,6 @@ services:
       - VIRTUAL_HOST=portal-mtw.ddns.net
       - VIRTUAL_PATH=/factura
       - VIRTUAL_DEST=/
-      - LETSENCRYPT_HOST=portal-mtw.ddns.net
-      - LETSENCRYPT_EMAIL=dan1san_@hotmail.com
     volumes:
       - /volumes/www/factura:/usr/share/nginx/html:ro
 
@@ -49,7 +46,5 @@ services:
       - VIRTUAL_HOST=portal-mtw.ddns.net
       - VIRTUAL_PATH=/erp
       - VIRTUAL_DEST=/
-      - LETSENCRYPT_HOST=portal-mtw.ddns.net
-      - LETSENCRYPT_EMAIL=dan1san_@hotmail.com
     volumes:
       - /volumes/www/erp:/usr/local/apache2/htdocs
