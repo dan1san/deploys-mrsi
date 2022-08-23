@@ -31,7 +31,7 @@ services:
     #container_name: Factura
     restart: always
     environment:
-      - VIRTUAL_HOST=factura-mtw.ddns.net
+      #- VIRTUAL_HOST=factura-mtw.ddns.net
       - VIRTUAL_PATH=/factura
       - VIRTUAL_DEST=/
     volumes:
@@ -43,7 +43,7 @@ services:
     #container_name: ERP
     restart: always
     environment:
-      - VIRTUAL_HOST=erp-mtw.ddns.net
+      #- VIRTUAL_HOST=erp-mtw.ddns.net
       - VIRTUAL_PATH=/erp
       - VIRTUAL_DEST=/
     volumes:
