@@ -3,7 +3,6 @@ version: '3.1'
 services:
 
   reverse-proxy:
-    #image: jwilder/nginx-proxy:alpine
     image: nginxproxy/nginx-proxy:alpine
     container_name: Reverse-Proxy
     restart: always
@@ -11,14 +10,13 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
       - /volumes/nginx/certs:/etc/nginx/certs
       - /volumes/nginx/vhostd:/etc/nginx/vhost.d
       - /volumes/nginx/html:/usr/share/nginx/html:rw
+      - /var/run/docker.sock:/tmp/docker.sock:ro
 
   portal:
     image: nginx
-    #container_name: Portal
     restart: always
     environment:
       - VIRTUAL_HOST=portal-mtw.ddns.net
@@ -28,7 +26,6 @@ services:
 
   factura:
     image: nginx
-    #container_name: Factura
     restart: always
     environment:
       - VIRTUAL_HOST=portal-mtw.ddns.net
@@ -39,7 +36,6 @@ services:
 
   erp:
     image: httpd
-    #container_name: ERP
     restart: always
     environment:
       - VIRTUAL_HOST=portal-mtw.ddns.net
