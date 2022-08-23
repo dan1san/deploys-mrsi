@@ -23,15 +23,13 @@ lets-encrypt:
   image: jrcs/letsencrypt-nginx-proxy-companion
   container_name: 'Lets-Encrypt'
   restart: always
-   environment:
-    - NGINX_PROXY_CONTAINER=Reverse-Proxy
-
+  environment:
+   - NGINX_PROXY_CONTAINER=Reverse-Proxy
   volumes:
    - /volumes/nginx/certs:/etc/nginx/certs
    - /volumes/nginx/vhostd:/etc/nginx/vhost.d
    - /volumes/nginx/html:/usr/share/nginx/html:rw
    - /var/run/docker.sock:/var/run/docker.sock:ro
-
 
   portal:
     image: nginx
