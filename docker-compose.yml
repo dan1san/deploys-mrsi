@@ -11,31 +11,40 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /volumes/nginx/certs:/etc/nginx/certs
+      - /volumes/nginx/vhostd:/etc/nginx/vhost.d
+      - /volumes/nginx/html:/usr/share/nginx/html:rw
+
 
   portal:
     image: nginx
-    container_name: Portal
+    #container_name: Portal
     restart: always
     environment:
       - VIRTUAL_HOST=portal-mtw.ddns.net
+      - VIRTUAL_PATH=/
     volumes:
       - /volumes/www/portal:/usr/share/nginx/html:ro
 
   factura:
     image: nginx
-    container_name: Factura
+    #container_name: Factura
     restart: always
     environment:
       - VIRTUAL_HOST=factura-mtw.ddns.net
+      - VIRTUAL_PATH=/factura
+      - VIRTUAL_DEST=/
     volumes:
       - /volumes/www/factura:/usr/share/nginx/html:ro
 
   # ERP
   erp:
     image: httpd
-    container_name: ERP
+    #container_name: ERP
     restart: always
     environment:
       - VIRTUAL_HOST=erp-mtw.ddns.net
+      - VIRTUAL_PATH=/erp
+      - VIRTUAL_DEST=/
     volumes:
       - /volumes/www/erp:/usr/local/apache2/htdocs
