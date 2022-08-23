@@ -10,13 +10,9 @@ services:
     ports:
       - 80:80
       - 443:443
-    #environment:
-    #- VIRTUAL_HOST=portal-mtw.ddns.net
-    #- VIRTUAL_PATH=/.well-known
     volumes:
       - /volumes/nginx/certs:/etc/nginx/certs:ro
       - /volumes/nginx/vhostd:/etc/nginx/vhost.d
-      - /volumes/nginx/html:/usr/share/nginx/html:rw
       - /var/run/docker.sock:/tmp/docker.sock:ro
       
 lets-encrypt:
@@ -24,6 +20,8 @@ lets-encrypt:
   container_name: 'Lets-Encrypt'
   restart: always
   environment:
+   - VIRTUAL_HOST=portal-mtw.ddns.net
+   - VIRTUAL_PATH=/.well-known
    - NGINX_PROXY_CONTAINER=Reverse-Proxy
   volumes:
    - /volumes/nginx/certs:/etc/nginx/certs
