@@ -14,7 +14,7 @@ services:
       - /volumes/nginx/certs:/etc/nginx/certs
       - /volumes/nginx/vhostd:/etc/nginx/vhost.d
       - /volumes/nginx/html:/usr/share/nginx/html:rw
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
 
   portal:
     image: nginx
