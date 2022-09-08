@@ -47,5 +47,15 @@ services:
     volumes:
       - /volumes/www/erp:/usr/local/apache2/htdocs
       
+    gym:
+    image: httpd
+    restart: always
+    environment:
+      - VIRTUAL_HOST=portal-mtw.ddns.net
+      - VIRTUAL_PATH=/gym
+      - VIRTUAL_DEST=/
+    volumes:
+      - /volumes/www/gym:/usr/local/apache2/htdocs 
+      
 
 
