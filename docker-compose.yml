@@ -48,7 +48,7 @@ services:
       - /volumes/www/erp:/usr/local/apache2/htdocs
       
     gym:
-    image: httpd
+    image: nginx
     restart: always
     environment:
       - VIRTUAL_HOST=portal-mtw.ddns.net
