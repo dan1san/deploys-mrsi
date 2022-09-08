@@ -55,7 +55,7 @@ services:
       - VIRTUAL_PATH=/gym
       - VIRTUAL_DEST=/
     volumes:
-      - /volumes/www/gym:/usr/local/apache2/htdocs 
+      - /volumes/www/gym:/usr/share/nginx/html:ro
       
 
 
